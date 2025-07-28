@@ -38,7 +38,7 @@ The Customer Feedback Analysis System is a powerful tool that helps businesses u
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/hitkalariya
    cd customer-feedback-analyzer
    ```
 
