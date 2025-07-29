@@ -315,3 +315,22 @@ class DataVisualizer:
             print(f"Chart saved to {filename}")
         else:
             print("No chart to save") 
+
+    def export_all_charts_as_zip(self, charts, filenames, zip_filename):
+        """
+        Export multiple chart figures as images and compress them into a zip file.
+
+        Args:
+            charts (list): List of matplotlib.figure.Figure objects.
+            filenames (list): List of filenames for each chart image.
+            zip_filename (str): Output zip file name.
+        """
+        import zipfile
+        import io
+        with zipfile.ZipFile(zip_filename, 'w') as zipf:
+            for fig, fname in zip(charts, filenames):
+                buf = io.BytesIO()
+                fig.savefig(buf, format='png')
+                buf.seek(0)
+                zipf.writestr(fname, buf.read())
+        print(f"Exported {len(charts)} charts to {zip_filename}") 

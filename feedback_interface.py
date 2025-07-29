@@ -22,14 +22,26 @@ class FeedbackAnalyzerInterface:
         self.setup_interface()
         
     def setup_window(self):
-        """Configure the main window properties"""
+        """Configure the main window properties and add menu bar"""
         self.root.title("Customer Feedback Analysis System")
         self.root.geometry("800x600")
         self.root.configure(bg='#f0f0f0')
-        
         # Set window icon and styling
         style = ttk.Style()
         style.theme_use('clam')
+        # Add menu bar
+        menubar = tk.Menu(self.root)
+        helpmenu = tk.Menu(menubar, tearoff=0)
+        helpmenu.add_command(label="About", command=self.show_about_dialog)
+        menubar.add_cascade(label="Help", menu=helpmenu)
+        self.root.config(menu=menubar)
+
+    def show_about_dialog(self):
+        """Show an About dialog with project info"""
+        messagebox.showinfo(
+            "About",
+            "Customer Feedback Analysis System\n\nVersion 1.2.0\nDeveloped by hitkalariya\nSee: https://github.com/hitkalariya"
+        )
         
     def setup_interface(self):
         """Create and arrange all interface elements"""

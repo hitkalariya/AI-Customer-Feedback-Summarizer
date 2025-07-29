@@ -324,3 +324,22 @@ class FeedbackProcessor:
                 return col
                 
         return None 
+
+    def export_results_as_json(self, results, filename):
+        """
+        Export the analysis results as a JSON file.
+
+        Args:
+            results (str): The analysis results as a string.
+            filename (str): The output JSON file name.
+        """
+        import json
+        try:
+            # Try to parse results as key-value pairs if possible
+            lines = [line for line in results.split('\n') if ':' in line]
+            data = {line.split(':', 1)[0].strip(): line.split(':', 1)[1].strip() for line in lines}
+            with open(filename, 'w', encoding='utf-8') as f:
+                json.dump(data, f, indent=2)
+            print(f"Results exported to {filename}")
+        except Exception as e:
+            print(f"Failed to export results as JSON: {e}") 

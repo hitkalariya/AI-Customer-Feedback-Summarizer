@@ -205,3 +205,7 @@ For support and questions:
 ---
 
 **Note**: This application is designed for educational and business use. Always ensure you have permission to analyze customer data and comply with relevant privacy regulations.
+
+## Project Repository
+
+You can find the source code and contribute at: [https://github.com/hitkalariya](https://github.com/hitkalariya)
